@@ -18,19 +18,24 @@ $(function() {
     }
   
     var rows = document.querySelectorAll(".chartRow");
+
+    // Creates the card element for given row
+    function createCard(row) {
+      let newCard = document.createElement("div");
+      newCard.className = 'card';
+      row.appendChild(newCard)
+      let newInner = document.createElement("div");
+      newInner.className = 'inner';
+      newInner.style.backgroundImage = "url(covers/either-or.jpg)";
+      newInner.setAttribute("draggable", "true")
+      newCard.style.padding = paddingValue;
+      newCard.appendChild(newInner)
+    }
   
     // Default number of columns
     rows.forEach(row => {
       for (let i=0; i<colCount; i++) {
-        let newCard = document.createElement("div");
-        newCard.className = 'card';
-        row.appendChild(newCard)
-        let newInner = document.createElement("div");
-        newInner.className = 'inner';
-        newInner.style.backgroundImage = "url(eitheror.jpg)";
-        newInner.setAttribute("draggable", "true")
-        newCard.style.padding = paddingValue;
-        newCard.appendChild(newInner)
+        createCard(row);
       }
     });
   
@@ -42,8 +47,8 @@ $(function() {
         let newRow = document.createElement("div");
         newRow.className = 'chartRow';
         chart.appendChild(newRow);
-        rowCount++
-        createCard(newRow);
+        createRow(newRow);
+        rowCount++;
       }
   
       while (rowInput < rowCount){
@@ -64,37 +69,21 @@ $(function() {
   
       while (colInput < colCount) {
         removeCol();
-        colCount--
+        colCount--;
       }
       console.log(colInput)
     }
   
-    function createCard(row) {
-      for (let i = 0; i < colInput; i++) {
-        let newCard = document.createElement("div");
-        newCard.className = 'card';
-        row.appendChild(newCard)
-        let newInner = document.createElement("div");
-        newInner.className = 'inner';
-        newInner.style.backgroundImage = "url(eitheror.jpg)";
-        newInner.setAttribute("draggable", "true")
-        newCard.style.padding = paddingValue;
-        newCard.appendChild(newInner)
+    function createRow(row) {
+      for (let i = 0; i < colCount; i++) {
+        createCard(row);
       }
     }
   
     function createCol() {
       const rows = document.querySelectorAll(".chartRow")
       rows.forEach(row => {  
-        let newCard = document.createElement("div");
-        newCard.className = 'card';
-        row.appendChild(newCard)
-        let newInner = document.createElement("div");
-        newInner.className = 'inner';
-        newInner.style.backgroundImage = "url(eitheror.jpg)";
-        newInner.setAttribute("draggable", "true")
-        newCard.style.padding = paddingValue;
-        newCard.appendChild(newInner)
+        createCard(row);
       });
     }
   
