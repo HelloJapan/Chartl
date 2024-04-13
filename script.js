@@ -5,6 +5,7 @@ $(function() {
     var colInput = document.getElementById("columnsIn");
     var paddingInput = document.getElementById("paddingIn")
   
+    // Initialize the value of rows, columns, and padding
     var rowCount = rowInput.getAttribute("value");
     var colCount = colInput.getAttribute("value");
     var paddingValue = paddingInput.getAttribute("value");
@@ -91,6 +92,7 @@ $(function() {
         let newInner = document.createElement("div");
         newInner.className = 'inner';
         newInner.style.backgroundImage = "url(eitheror.jpg)";
+        newInner.setAttribute("draggable", "true")
         newCard.style.padding = paddingValue;
         newCard.appendChild(newInner)
       });
@@ -118,5 +120,4 @@ $(function() {
     colInput.addEventListener("input", updateCol);
     // Padding slider input listener
     paddingInput.addEventListener("input", updatePadding);
-    
   });
