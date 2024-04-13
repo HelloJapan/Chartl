@@ -74,12 +74,14 @@ $(function() {
       console.log(colInput)
     }
   
+    // Create a new row of cards
     function createRow(row) {
       for (let i = 0; i < colCount; i++) {
         createCard(row);
       }
     }
   
+    // Create a new column of cards
     function createCol() {
       const rows = document.querySelectorAll(".chartRow")
       rows.forEach(row => {  
@@ -87,6 +89,7 @@ $(function() {
       });
     }
   
+    // Remove the rightmost column
     function removeCol() {
       const rows = document.querySelectorAll(".chartRow");
       rows.forEach(row => {
@@ -94,6 +97,7 @@ $(function() {
       });
     }
   
+    // Change card element padding according to slider
     function updatePadding() {
       var cards = document.querySelectorAll(".card");
       paddingInput = document.getElementById("paddingOut").innerHTML;
