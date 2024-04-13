@@ -24,10 +24,12 @@ $(function() {
       let newCard = document.createElement("div");
       newCard.className = 'card';
       row.appendChild(newCard)
+
       let newInner = document.createElement("div");
       newInner.className = 'inner';
       newInner.style.backgroundImage = "url(covers/either-or.jpg)";
       newInner.setAttribute("draggable", "true")
+
       newCard.style.padding = paddingValue;
       newCard.appendChild(newInner)
     }
@@ -51,8 +53,8 @@ $(function() {
         rowCount++;
       }
   
-      while (rowInput < rowCount){
-        $(".chartRow").last().remove( );
+      while (rowInput < rowCount) {
+        $(".chartRow").last().remove();
         rowCount--;
       }
       console.log(rowInput)
@@ -106,6 +108,53 @@ $(function() {
         card.style.padding = paddingValue;
       });
     }
+
+    function searchMusic() {
+      let input = document.getElementById("searchInput");
+      console.log(input.value);
+      // Search last fm
+    }
+
+    function searchBooks() {
+      let input = document.getElementById("searchInput");
+      console.log(input.value);
+      // Search Goodreads or similar site
+    }
+
+    function searchMovies() {
+      let input = document.getElementById("searchInput");
+      console.log(input.value);
+      // Search letterboxd and imdb
+    }
+
+    function selectedDisplay() {
+      switch (parseInt(selectedOption.selectedIndex)) {
+        case 0:
+          document.getElementById("searchInput").setAttribute("placeholder", "Album or artist");
+          break;
+        case 1:
+          document.getElementById("searchInput").setAttribute("placeholder", "Movie title");
+          break;
+        case 2:
+          document.getElementById("searchInput").setAttribute("placeholder", "Book title or author");
+          break;
+      }
+    }
+
+    function selectedType(event) {
+      event.preventDefault();
+      switch (parseInt(selectedOption.selectedIndex)) {
+        case 0:
+          searchMusic();
+          break;
+        case 1:
+          searchMovies();
+          break;
+        case 2:
+          searchBooks();
+          break;
+      }
+    }
     
     // Rows slider input listener
     rowInput.addEventListener("input", updateRow);
@@ -113,4 +162,10 @@ $(function() {
     colInput.addEventListener("input", updateCol);
     // Padding slider input listener
     paddingInput.addEventListener("input", updatePadding);
+
+    var selectedOption = document.getElementById("selectType");
+    selectedOption.addEventListener("change", selectedDisplay);
+
+    const form = document.getElementById("searchContainer");
+    form.addEventListener("submit", selectedType);
   });

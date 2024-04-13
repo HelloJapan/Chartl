@@ -1,38 +1,45 @@
-body {
+  body 
+  {
     padding: 20px;
     font-family: Helvetica;
   }
   
-  #sliderWrapper {
+  #fixed
+  {
     width: 10%;
     position: fixed;
     max-width: 10%;
   }
   
-  #chartWrapper {
+  #chartWrapper 
+  {
     display: inline-block;
     margin-left: 12%;
     width: 85%;
     background-color:royalblue;
   }
   
-  #chart {
+  #chart 
+  {
     width: 60%;
   }
   
-  .chartRow {
+  .chartRow 
+  {
     opacity: 0.9;
     background-color: #20262e;
   }
   
-  .card {
+  .card 
+  {
     opacity: 1;
     display: inline-block;
     height: 250px;
     width: 250px;
   }
   
-  .inner {
+  .inner 
+  {
     opacity: 1;
     height: 100%;
   }
