@@ -1,9 +1,14 @@
 $(function() {
     var chart = document.getElementById("chart");
+    var searchWrapper = document.getElementById("searchWrapper");
   
     var rowInput = document.getElementById("rowsIn");
     var colInput = document.getElementById("columnsIn");
     var paddingInput = document.getElementById("paddingIn")
+
+    // Holds selected type of media to search for
+    var selectedOption = document.getElementById("selectType");
+    const form = document.getElementById("searchContainer");
   
     // Initialize the value of rows, columns, and padding
     var rowCount = rowInput.getAttribute("value");
@@ -124,7 +129,24 @@ $(function() {
     function searchMovies() {
       let input = document.getElementById("searchInput");
       console.log(input.value);
+      showResults(input.value);
       // Search letterboxd and imdb
+    }
+
+    function showResults(input) {
+      let results = document.createElement("div");
+      results.className = "searchResults";
+      searchWrapper.appendChild(results);
+      
+      let newCard = document.createElement("div");
+      newCard.className = 'card';
+      results.appendChild(newCard)
+
+      let newInner = document.createElement("div");
+      newInner.className = 'resCover';
+      newInner.style.backgroundImage = "url(covers/" + input + ".jpg)";
+      newInner.setAttribute("draggable", "true")
+      newCard.appendChild(newInner);
     }
 
     function selectedDisplay() {
@@ -162,10 +184,8 @@ $(function() {
     colInput.addEventListener("input", updateCol);
     // Padding slider input listener
     paddingInput.addEventListener("input", updatePadding);
-
-    var selectedOption = document.getElementById("selectType");
+    // Selected type of media change listener
     selectedOption.addEventListener("change", selectedDisplay);
-
-    const form = document.getElementById("searchContainer");
+    // Search form submit listener
     form.addEventListener("submit", selectedType);
   });
